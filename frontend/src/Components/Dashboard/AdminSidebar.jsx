@@ -1,0 +1,280 @@
+import {
+    Avatar,
+    Box,
+    Flex,
+    Icon,
+    Text,
+    Drawer,
+    DrawerContent,
+    IconButton,
+    useDisclosure,
+    DrawerOverlay,
+    useColorModeValue,
+    VStack,
+} from '@chakra-ui/react';
+import { FaBell } from 'react-icons/fa';
+import { AiOutlineTeam, AiOutlineHome } from 'react-icons/ai';
+import { BsFolder2, BsCalendarCheck, BsClipboard2Plus, BsClipboard2Check } from 'react-icons/bs';
+import { FiMenu } from 'react-icons/fi';
+import { RiFlashlightFill } from 'react-icons/ri';
+import { GoDot, GoPersonAdd } from "react-icons/go";
+import { PiStudent } from "react-icons/pi";
+import { LiaCommentAltSolid } from "react-icons/lia";
+import { IoLogoCodepen } from "react-icons/io";
+import { MdOutlineDashboard, MdOutlineReportGmailerrorred, MdOutlineSupportAgent, MdSyncProblem } from "react-icons/md";
+import { RiMastercardLine } from "react-icons/ri";
+import { IoMdArrowDropdown } from "react-icons/io";
+import { IoSettingsOutline, IoWalletOutline } from "react-icons/io5";
+import { FaRegNewspaper } from "react-icons/fa";
+
+import { NavLink } from 'react-router-dom';
+import AdminRoutes from '../Routes/AdminRoutes';
+import { useState } from 'react';
+
+
+export default function AdminSidebar() {
+    const { isOpen, onClose, onOpen } = useDisclosure();
+
+    return (
+        <Box as="section" bg={useColorModeValue('gray.50', 'gray.700')} minH="100vh">
+            <SidebarContent display={{ base: 'none', md: 'unset' }} />
+            <Drawer isOpen={isOpen} onClose={onClose} placement="left">
+                <DrawerOverlay />
+                <DrawerContent>
+                    <SidebarContent w="full" borderRight="none" />
+                </DrawerContent>
+            </Drawer>
+            <Box ml={{ base: 0, md: 60 }} transition=".3s ease" position='relative'>
+                <Flex
+                    position='sticky'
+                    top='0'
+                    as="header"
+                    align="center"
+                    justifyContent={{ base: 'space-between', md: 'flex-end' }}
+                    w="full"
+                    px="4"
+                    borderBottomWidth="1px"
+                    borderColor={useColorModeValue('inherit', 'gray.700')}
+                    bg={"#040930"}
+                    boxShadow="sm"
+                    h="14"
+                    zIndex='999'
+                >
+
+                    <IconButton
+                        aria-label="Menu"
+                        display={{ base: 'inline-flex', md: 'none' }}
+                        onClick={onOpen}
+                        icon={<FiMenu />}
+                        size="md"
+                    />
+
+                    <Flex align="center">
+                        <Avatar
+                            ml="4"
+                            size="sm"
+                            name="Ahmad"
+                            src="https://avatars2.githubusercontent.com/u/37842853?v=4"
+                            cursor="pointer"
+                        />
+                        <VStack marginLeft="5px" spacing="0px" alignItems="flex-start" color="whitesmoke">
+                            <Text fontWeight="bold" fontSize="16px" fontFamily="Open sans" mb={0} >Abhishek</Text>
+                            <Text fontSize="12px" mt={0}>Admin</Text>
+                        </VStack>
+                    </Flex>
+                </Flex>
+
+                <Box as="main" p={18} minH="50rem" bg="#02062b" color="whitesmoke">
+                    <AdminRoutes />
+                </Box>
+            </Box>
+        </Box>
+    );
+}
+
+const SidebarContent = ({ ...props }) => (
+    <Box
+        as="nav"
+        pos="fixed"
+        top="0"
+        left="0"
+        zIndex="sticky"
+        h="full"
+        pb="10"
+        fontFamily="Playfair Display"
+        overflowX="hidden"
+        overflowY="auto"
+        bg={"#040930"}
+        borderColor={useColorModeValue('inherit', 'gray.700')}
+        borderRightWidth="1px"
+        w="60"
+        {...props}
+    >
+        <Flex px="4" py="5" align="center">
+            <Icon as={IoLogoCodepen} h={8} w={8} color={"white"} />
+            <Text
+                fontSize="2xl"
+                ml="2"
+                color="whitesmoke"
+                fontWeight="semibold"
+            >
+                Kratos
+            </Text>
+        </Flex>
+        <Flex direction="column" as="nav" fontSize="md" color={"whitesmoke"} aria-label="Main Navigation">
+
+            <NavItem to='/admin-dashboard' icon={MdOutlineDashboard}>Dashboard</NavItem>
+
+            <NavItemWithSubMenu icon={RiMastercardLine} title="Master">
+                <NavItem>Country Master</NavItem>
+                <NavItem>Operator Master</NavItem>
+                <NavItem>Gift Code Creation</NavItem>
+                <NavItem>Member Type</NavItem>
+                <NavItem>Rank Master</NavItem>
+                <NavItem>Package Master</NavItem>
+                <NavItem>Product Master</NavItem>
+            </NavItemWithSubMenu>
+
+            <NavItemWithSubMenu icon={AiOutlineTeam} title="Member Management">
+                <NavItem>All Memebers</NavItem>
+                <NavItem>Block/Unblock Member</NavItem>
+                <NavItem>Create Emails</NavItem>
+                <NavItem>Edit Member</NavItem>
+                <NavItem>ID Transfer Request</NavItem>
+                <NavItem>Allot Dummy Power to Leader</NavItem>
+                <NavItem>Allot Zero Valued Gift Codes</NavItem>
+            </NavItemWithSubMenu>
+
+            <NavItem icon={FaRegNewspaper}>Newsletter</NavItem>
+
+            <NavItemWithSubMenu icon={IoSettingsOutline} title="Settings">
+                <NavItem>Income Settings</NavItem>
+                <NavItem>Operator Rights</NavItem>
+                <NavItem>Create new password for member or operator</NavItem>
+            </NavItemWithSubMenu>
+
+            <NavItemWithSubMenu icon={IoWalletOutline} title="Wallet & Funds">
+                <NavItem>Add Balance to Members Wallet</NavItem>
+                <NavItem>Withdrawal Requests</NavItem>
+            </NavItemWithSubMenu>
+
+            <NavItemWithSubMenu icon={BsClipboard2Check} title="Event's Management">
+                <NavItem>Create Event</NavItem>
+                <NavItem>Upload Event Video</NavItem>
+            </NavItemWithSubMenu>
+
+            <NavItem icon={MdSyncProblem}>Promotions Management
+                </NavItem>
+
+            <NavItemWithSubMenu icon={MdOutlineReportGmailerrorred} title="Reports">
+                <NavItem>Member Reports</NavItem>
+                <NavItem>Promotion</NavItem>
+                <NavItem>Event</NavItem>
+            </NavItemWithSubMenu>
+
+            <NavItem icon={MdOutlineSupportAgent}>Support</NavItem>
+        </Flex>
+    </Box>
+);
+
+
+const NavItem = ({ icon, children, to }) => {
+    const color = useColorModeValue('gray.600', 'gray.300');
+
+    return (
+        <NavLink
+            to={to}
+            exact="true"
+            activeclassname="active"
+            style={{
+                textDecoration: 'none',
+                color: 'inherit',
+            }}
+        >
+            <Flex
+                align="center"
+                px="4"
+                py="3"
+                fontSize="14px"
+                cursor="pointer"
+                role="group"
+                fontWeight="semibold"
+                transition=".15s ease"
+                color={useColorModeValue('inherit', 'gray.400')}
+                _hover={{
+                    bg: useColorModeValue('gray.100', 'gray.900'),
+                    color: useColorModeValue('gray.900', 'gray.200')
+                }}
+            >
+                {icon && (
+                    <Icon
+                        mx="2"
+                        boxSize="4"
+                        _groupHover={{
+                            color: color
+                        }}
+                        as={icon}
+                    />
+                )}
+                {children}
+            </Flex>
+        </NavLink>
+    );
+};
+
+const NavItemWithSubMenu = ({ icon, title, children }) => {
+    const [isOpen, setIsOpen] = useState(false);
+    const color = useColorModeValue('gray.600', 'gray.300');
+
+    const toggleSubMenu = () => {
+        setIsOpen(!isOpen);
+    };
+
+    return (
+        <>
+            <Flex
+                align="center"
+                justify="space-between" // Align items evenly along the main axis
+                px="4"
+                py="3"
+                fontSize="15px"
+                cursor="pointer"
+                role="group"
+                fontWeight="semibold"
+                transition=".2s ease"
+                color={useColorModeValue('inherit', 'gray.400')}
+                _hover={{
+                    bg: useColorModeValue('gray.100', 'gray.900'),
+                    color: useColorModeValue('gray.900', 'gray.200')
+                }}
+                onClick={toggleSubMenu}
+            >
+                <Flex align="center">
+                    {icon && (
+                        <Icon
+                            mx="2"
+                            boxSize="4"
+                            _groupHover={{
+                                color: color
+                            }}
+                            as={icon}
+                        />
+                    )}
+                    {title}
+                </Flex>
+                {/* Dropdown Icon */}
+                <IoMdArrowDropdown />
+            </Flex>
+            {isOpen && (
+                <Box pl="10">
+                    {children?.map((child, index) => (
+                        <Flex align="center" key={index}>
+                            <GoDot />
+                            {child}
+                        </Flex>
+                    ))}
+                </Box>
+            )}
+        </>
+    );
+};
