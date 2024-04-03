@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useState } from 'react';
 import {
     FormControl,
     FormLabel,
@@ -10,8 +10,7 @@ import {
     VStack,
     Container,
     Flex,
-    Checkbox,
-    Select
+    Checkbox
 } from '@chakra-ui/react';
 import {Link} from 'react-router-dom'
 

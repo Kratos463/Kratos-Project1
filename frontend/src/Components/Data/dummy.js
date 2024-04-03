@@ -54,7 +54,98 @@ export const data2 = [
     { id: 901234, date: "2024-04-01", username: "user18", message: "I need a vacation.", status: "active" },
     { id: 123456, date: "2024-04-01", username: "user19", message: "Where are you?", status: "active" },
     { id: 234567, date: "2024-04-01", username: "user20", message: "Let's meet up.", status: "inactive" },
-  ];
-  
-  console.log(data);
-  
+];
+
+export const countries = [
+    { id: '001', name: "Afghanistan" },
+    { id: '002', name: "Albania" },
+    { id: '003', name: "Algeria" },
+    { id: '004', name: "Andorra" },
+    { id: '005', name: "Angola" },
+    { id: '006', name: "Antigua and Barbuda" },
+    { id: '007', name: "Argentina" },
+    { id: '008', name: "Armenia" },
+    { id: '009', name: "Australia" },
+    { id: '010', name: "Austria" },
+    { id: '011', name: "Azerbaijan" },
+    { id: '012', name: "Bahamas" },
+    { id: '013', name: "Bahrain" },
+    { id: '014', name: "Bangladesh" },
+    { id: '015', name: "Barbados" },
+    { id: '016', name: "Belarus" },
+    { id: '017', name: "Belgium" },
+    { id: '018', name: "Belize" },
+    { id: '019', name: "Benin" },
+    { id: '020', name: "Bhutan" },
+    { id: '021', name: "Bolivia" },
+    { id: '022', name: "Bosnia and Herzegovina" },
+    { id: '023', name: "Botswana" },
+    { id: '024', name: "Brazil" },
+    { id: '025', name: "Brunei" },
+    { id: '026', name: "Bulgaria" },
+    { id: '027', name: "Burkina Faso" },
+    { id: '028', name: "Burundi" },
+    { id: '029', name: "Cabo Verde" },
+    { id: '030', name: "Cambodia" },
+    { id: '031', name: "Cameroon" },
+    { id: '032', name: "Canada" },
+    { id: '033', name: "Central African Republic" },
+    { id: '034', name: "Chad" },
+    { id: '035', name: "Chile" },
+    { id: '036', name: "China" },
+    { id: '037', name: "Colombia" },
+    { id: '038', name: "Comoros" },
+    { id: '039', name: "Congo (Congo-Brazzaville)" },
+    { id: '040', name: "Costa Rica" }
+];
+
+
+export const users = [
+    { id: 100001, name: "John Doe", status: "active", email: "john@example.com", mobile: "1234567890" },
+    { id: 100002, name: "Jane Smith", status: "active", email: "jane@example.com", mobile: "2345678901" },
+    { id: 100003, name: "Alice Johnson", status: "active", email: "alice@example.com", mobile: "3456789012" },
+    { id: 100004, name: "Bob Brown", status: "active", email: "bob@example.com", mobile: "4567890123" },
+    { id: 100005, name: "Eva Martinez", status: "active", email: "eva@example.com", mobile: "5678901234" },
+    { id: 100006, name: "David Wilson", status: "active", email: "david@example.com", mobile: "6789012345" },
+    { id: 100007, name: "Sophia Taylor", status: "active", email: "sophia@example.com", mobile: "7890123456" },
+    { id: 100008, name: "Michael Anderson", status: "active", email: "michael@example.com", mobile: "8901234567" },
+    { id: 100009, name: "Olivia Garcia", status: "active", email: "olivia@example.com", mobile: "9012345678" },
+    { id: 100010, name: "William Lopez", status: "active", email: "william@example.com", mobile: "0123456789" },
+    { id: 100011, name: "John Doe", status: "active", email: "john@example.com", mobile: "1234567890" },
+    { id: 100012, name: "Jane Smith", status: "active", email: "jane@example.com", mobile: "2345678901" },
+    { id: 100013, name: "Alice Johnson", status: "active", email: "alice@example.com", mobile: "3456789012" },
+    { id: 100014, name: "Bob Brown", status: "active", email: "bob@example.com", mobile: "4567890123" },
+    { id: 100015, name: "Eva Martinez", status: "active", email: "eva@example.com", mobile: "5678901234" },
+    { id: 100016, name: "David Wilson", status: "active", email: "david@example.com", mobile: "6789012345" },
+    { id: 100017, name: "Sophia Taylor", status: "active", email: "sophia@example.com", mobile: "7890123456" },
+    { id: 100018, name: "Michael Anderson", status: "active", email: "michael@example.com", mobile: "8901234567" },
+    { id: 100019, name: "Olivia Garcia", status: "active", email: "olivia@example.com", mobile: "9012345678" },
+    { id: 100020, name: "William Lopez", status: "active", email: "william@example.com", mobile: "0123456789" }
+];
+
+export const networkMarketingRanks = [
+    { id: 100001, rank: "Independent Distributor" },
+    { id: 100002, rank: "Team Member" },
+    { id: 100003, rank: "Team Leader" },
+    { id: 100004, rank: "Senior Team Leader" },
+    { id: 100005, rank: "Supervisor" },
+    { id: 100006, rank: "Manager" },
+    { id: 100007, rank: "Senior Manager" },
+    { id: 100008, rank: "Director" },
+    { id: 100009, rank: "Senior Director" },
+    { id: 100010, rank: "Executive Director" }
+];
+
+export const networkMarketingProducts = [
+    { id: 100001, name: "Health Supplements", minQuantity: 100, price: 50 },
+    { id: 100002, name: "Beauty and Skincare Products", minQuantity: 100, price: 30 },
+    { id: 100003, name: "Weight Management Products", minQuantity: 100, price: 40 },
+    { id: 100004, name: "Nutritional Drinks", minQuantity: 100, price: 25 },
+    { id: 100005, name: "Essential Oils", minQuantity: 100, price: 20 },
+    { id: 100006, name: "Home Cleaning Products", minQuantity: 100, price: 15 },
+    { id: 100007, name: "Personal Care Items", minQuantity: 100, price: 35 },
+    { id: 100008, name: "Fitness Equipment", minQuantity: 100, price: 100 },
+    { id: 100009, name: "Water Purification Systems", minQuantity: 100, price: 200 },
+    { id: 100010, name: "Kitchen Appliances", minQuantity: 100, price: 150 }
+];
+

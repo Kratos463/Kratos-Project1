@@ -1,6 +1,6 @@
 import React from 'react'
 import LineChart from '../Charts/LineChart'
-import { Box, Text, Flex } from '@chakra-ui/react'
+import { Box, Text, Flex, Heading } from '@chakra-ui/react'
 import TableComponent from './Tables';
 import { data, data2, headers, headers2 } from '../Data/dummy';
 
@@ -8,10 +8,9 @@ import { data, data2, headers, headers2 } from '../Data/dummy';
 const Dashboard = () => {
 
 
-
-
     return (
         <Box>
+            <Heading ml={6} as='h2' size='md'>Welcome, Dashboard</Heading>
             <Box className="graph-container">
                 <Text fontSize="20px" fontWeight="bold">Total Package sales - $3902</Text>
                 <LineChart />
@@ -22,16 +21,16 @@ const Dashboard = () => {
             </Box>
             <Flex>
                 <Box className="graph-container" flex={1}>
-                    <Text fontSize="15px" fontWeight="bold" mb={2}>Top Earners (50)</Text>
+                    <Heading as="h5" size="sm" color="white" mb={2}>Top Earners (50)</Heading>
                     <TableComponent headers={headers} data={data} />
                 </Box>
                 <Box className="graph-container" flex={1}>
-                    <Text fontSize="15px" fontWeight="bold">Recently Joined</Text>
+                    <Heading as="h5" size="sm" color="white" mb={2}>Recently Joined</Heading>
                     <TableComponent headers={headers} data={data} />
                 </Box>
             </Flex>
             <Box className="graph-container">
-                <Text fontSize="15px" fontWeight="bold">Support</Text>
+                <Heading as="h5" size="sm" color="white" mb={2}>Support</Heading>
                 <TableComponent headers={headers2} data={data2} />
             </Box>
 

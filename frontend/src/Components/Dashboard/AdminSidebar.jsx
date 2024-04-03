@@ -11,21 +11,21 @@ import {
     DrawerOverlay,
     useColorModeValue,
     VStack,
+    Image,
 } from '@chakra-ui/react';
-import { FaBell } from 'react-icons/fa';
-import { AiOutlineTeam, AiOutlineHome } from 'react-icons/ai';
-import { BsFolder2, BsCalendarCheck, BsClipboard2Plus, BsClipboard2Check } from 'react-icons/bs';
+import { AiOutlineTeam } from 'react-icons/ai';
+import { BsClipboard2Check } from 'react-icons/bs';
 import { FiMenu } from 'react-icons/fi';
-import { RiFlashlightFill } from 'react-icons/ri';
-import { GoDot, GoPersonAdd } from "react-icons/go";
-import { PiStudent } from "react-icons/pi";
-import { LiaCommentAltSolid } from "react-icons/lia";
-import { IoLogoCodepen } from "react-icons/io";
-import { MdOutlineDashboard, MdOutlineReportGmailerrorred, MdOutlineSupportAgent, MdSyncProblem } from "react-icons/md";
+import { GoDot } from "react-icons/go";
+import {
+    MdOutlineDashboard, MdOutlineReportGmailerrorred,
+    MdOutlineSupportAgent, MdSyncProblem
+} from "react-icons/md";
 import { RiMastercardLine } from "react-icons/ri";
 import { IoMdArrowDropdown } from "react-icons/io";
 import { IoSettingsOutline, IoWalletOutline } from "react-icons/io5";
 import { FaRegNewspaper } from "react-icons/fa";
+import logo from '../../Assests/meta-light-logo-01.png'
 
 import { NavLink } from 'react-router-dom';
 import AdminRoutes from '../Routes/AdminRoutes';
@@ -111,14 +111,14 @@ const SidebarContent = ({ ...props }) => (
         {...props}
     >
         <Flex px="4" py="5" align="center">
-            <Icon as={IoLogoCodepen} h={8} w={8} color={"white"} />
+            <Image src={logo} alt="logo" size="sm" width="50px"/>
             <Text
-                fontSize="2xl"
+                fontSize="xl"
                 ml="2"
                 color="whitesmoke"
                 fontWeight="semibold"
             >
-                Kratos
+                META FORTUNAVERSE
             </Text>
         </Flex>
         <Flex direction="column" as="nav" fontSize="md" color={"whitesmoke"} aria-label="Main Navigation">
@@ -126,13 +126,13 @@ const SidebarContent = ({ ...props }) => (
             <NavItem to='/admin-dashboard' icon={MdOutlineDashboard}>Dashboard</NavItem>
 
             <NavItemWithSubMenu icon={RiMastercardLine} title="Master">
-                <NavItem>Country Master</NavItem>
-                <NavItem>Operator Master</NavItem>
+                <NavItem to='/master/country-master'>Country Master</NavItem>
+                <NavItem to='/master/operator-master'>Operator Master</NavItem>
                 <NavItem>Gift Code Creation</NavItem>
                 <NavItem>Member Type</NavItem>
-                <NavItem>Rank Master</NavItem>
-                <NavItem>Package Master</NavItem>
-                <NavItem>Product Master</NavItem>
+                <NavItem to='/master/rank-master'>Rank Master</NavItem>
+                <NavItem to='/master/package-master'>Package Master</NavItem>
+                <NavItem to='/master/product-master'>Product Master</NavItem>
             </NavItemWithSubMenu>
 
             <NavItemWithSubMenu icon={AiOutlineTeam} title="Member Management">
@@ -164,7 +164,7 @@ const SidebarContent = ({ ...props }) => (
             </NavItemWithSubMenu>
 
             <NavItem icon={MdSyncProblem}>Promotions Management
-                </NavItem>
+            </NavItem>
 
             <NavItemWithSubMenu icon={MdOutlineReportGmailerrorred} title="Reports">
                 <NavItem>Member Reports</NavItem>
