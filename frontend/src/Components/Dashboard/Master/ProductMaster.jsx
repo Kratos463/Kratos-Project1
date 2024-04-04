@@ -9,6 +9,8 @@ import {
 } from '@chakra-ui/react';
 import { EditIcon } from '@chakra-ui/icons';
 import { networkMarketingProducts } from '../../Data/dummy';
+import SearchForm from '../../GeneralScreens/SearchForm';
+import useFilteredData from '../../Hooks/useFilteredData';
 
 
 const ProductMaster = () => {
@@ -87,32 +89,25 @@ const ProductMaster = () => {
                         </FormControl>
                     </Flex>
 
-                    <FormControl mt={5}>
-
-                    </FormControl>
                     <Flex justify="flex-end">
                         <Button mt={5} bgColor="blue" color="whitesmoke" size="md">Submit</Button>
                     </Flex>
                 </form>
             </Box >
             <Box p="10px" style={{ backgroundColor: 'var(--secondary-bgcolor)' }}>
-                <RankTable openModal={openModal} />
+                <ProductTable openModal={openModal} />
             </Box>
 
-            <RankEditPopUp isOpen={isModalOpen} onClose={closeModal} />
+            <ProductEditPopUp isOpen={isModalOpen} onClose={closeModal} />
         </>
     )
 }
 
 export default ProductMaster
 
-const RankTable = ({ openModal }) => {
-    const [searchTerm, setSearchTerm] = useState('');
+const ProductTable = ({ openModal }) => {
     const [isActive, setIsActive] = useState(true);
-
-    const filteredProduct = networkMarketingProducts?.filter(
-        product => product.name.toLowerCase().includes(searchTerm.toLowerCase())
-    );
+    const [filteredData, handleFilterChange] = useFilteredData(networkMarketingProducts);
 
     const toggleActiveButton = () => {
         setIsActive(prevState => !prevState); // Toggle the state
@@ -123,17 +118,12 @@ const RankTable = ({ openModal }) => {
         openModal();
     }
 
+
     return (
         <>
             <Flex mb={5}>
                 <Heading as="h5" size="sm" color="white" flex={1}>Product List</Heading>
-                <Input
-                    flex={1}
-                    size="sm"
-                    placeholder="Search Rank"
-                    value={searchTerm}
-                    onChange={e => setSearchTerm(e.target.value)}
-                />
+                <SearchForm data={networkMarketingProducts} onFilterChange={handleFilterChange} />
             </Flex>
             <Box minH="450px" maxH="450px" overflowY="scroll">
                 <Table variant="simple" size="sm">
@@ -148,7 +138,7 @@ const RankTable = ({ openModal }) => {
                     </Thead>
                     <Tbody>
                         {
-                            filteredProduct?.map((product) => {
+                            filteredData?.map((product) => {
                                 return (
                                     <Tr key={product.id}>
                                         <Td>{product.id}</Td>
@@ -170,7 +160,7 @@ const RankTable = ({ openModal }) => {
     )
 }
 
-const RankEditPopUp = ({ isOpen, onClose }) => {
+const ProductEditPopUp = ({ isOpen, onClose }) => {
     return (
         <Modal isOpen={isOpen} onClose={onClose} size="xl">
             <ModalOverlay />

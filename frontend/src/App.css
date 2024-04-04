@@ -6,12 +6,12 @@
     font-optical-sizing: auto;
     font-style: normal;
     font-variation-settings:
-      "wdth" 100,
-      "YTLC" 500;
+        "wdth" 100,
+        "YTLC" 500;
 }
 
-:root{
-    --primary-bgcolor : #040930;
+:root {
+    --primary-bgcolor: #040930;
     --secondary-bgcolor: #16113a
 }
 
@@ -40,4 +40,29 @@
     padding: 10px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     margin: 10px;
+}
+
+.ck-editor__top * {
+    border: none !important;
+}
+
+.ck-editor__top {
+    border: rgb(235, 235, 235) solid 1px !important;
+    border-bottom: none !important;
+    padding: 0.6rem 1rem !important;
+}
+
+.ck-content {
+    border: rgb(235, 235, 235) solid 1px !important;
+    color: black;
+}
+
+
+.ck-editor__editable {
+    height: 300px;
+    padding: 0.5rem 1rem !important;
+}
+
+.ck-editor__editable:focus {
+    box-shadow: none !important;
 }

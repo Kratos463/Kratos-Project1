@@ -21,6 +21,7 @@ import {
     MdOutlineDashboard, MdOutlineReportGmailerrorred,
     MdOutlineSupportAgent, MdSyncProblem
 } from "react-icons/md";
+
 import { RiMastercardLine } from "react-icons/ri";
 import { IoMdArrowDropdown } from "react-icons/io";
 import { IoSettingsOutline, IoWalletOutline } from "react-icons/io5";
@@ -111,7 +112,7 @@ const SidebarContent = ({ ...props }) => (
         {...props}
     >
         <Flex px="4" py="5" align="center">
-            <Image src={logo} alt="logo" size="sm" width="50px"/>
+            <Image src={logo} alt="logo" size="sm" width="50px" />
             <Text
                 fontSize="xl"
                 ml="2"
@@ -136,16 +137,14 @@ const SidebarContent = ({ ...props }) => (
             </NavItemWithSubMenu>
 
             <NavItemWithSubMenu icon={AiOutlineTeam} title="Member Management">
-                <NavItem>All Memebers</NavItem>
-                <NavItem>Block/Unblock Member</NavItem>
-                <NavItem>Create Emails</NavItem>
-                <NavItem>Edit Member</NavItem>
+                <NavItem to='member-management/members'>All Memebers</NavItem>
+                <NavItem to='member-management/special-email'>Create Special Emails</NavItem>
                 <NavItem>ID Transfer Request</NavItem>
-                <NavItem>Allot Dummy Power to Leader</NavItem>
-                <NavItem>Allot Zero Valued Gift Codes</NavItem>
+                <NavItem to='member-management/dummy-power'>Allot Dummy Power to Leader</NavItem>
+                <NavItem to='member-management/gift-code'>Allot Zero Valued Gift Codes</NavItem>
             </NavItemWithSubMenu>
 
-            <NavItem icon={FaRegNewspaper}>Newsletter</NavItem>
+            <NavItem icon={FaRegNewspaper} to='/newsletter'>Newsletter</NavItem>
 
             <NavItemWithSubMenu icon={IoSettingsOutline} title="Settings">
                 <NavItem>Income Settings</NavItem>

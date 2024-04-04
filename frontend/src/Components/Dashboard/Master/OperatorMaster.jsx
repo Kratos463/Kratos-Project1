@@ -6,6 +6,8 @@ import {
 } from '@chakra-ui/react';
 import { users } from '../../Data/dummy';
 import { EditIcon } from '@chakra-ui/icons';
+import SearchForm from '../../GeneralScreens/SearchForm';
+import useFilteredData from '../../Hooks/useFilteredData';
 
 const OperatorMaster = () => {
 
@@ -55,14 +57,9 @@ const OperatorMaster = () => {
 export default OperatorMaster
 
 const OperatorTable = ({ openModal }) => {
-    const [searchTerm, setSearchTerm] = useState('');
-    const [isActive, setIsActive] = useState(true);
 
-    const filteredUsers = users?.filter(
-        user =>
-            user?.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-            user?.email.toLowerCase().includes(searchTerm.toLowerCase())
-    );
+    const [isActive, setIsActive] = useState(true);
+    const [filteredData, handleFilterChange] = useFilteredData(users);
 
     const toggleActiveButton = () => {
         setIsActive(prevState => !prevState); // Toggle the state
@@ -76,13 +73,7 @@ const OperatorTable = ({ openModal }) => {
         <>
             <Flex mb={5}>
                 <Heading as="h5" size="sm" color="white" flex={1}>Operator List</Heading>
-                <Input
-                    flex={1}
-                    size="sm"
-                    placeholder="Search Operator"
-                    value={searchTerm}
-                    onChange={e => setSearchTerm(e.target.value)}
-                />
+                <SearchForm data={users} onFilterChange={handleFilterChange} />
             </Flex>
             <Box minH="450px" maxH="450px" overflowY="scroll">
                 <Table variant="simple" size="sm">
@@ -97,7 +88,7 @@ const OperatorTable = ({ openModal }) => {
                     </Thead>
                     <Tbody>
                         {
-                            filteredUsers?.map((user) => {
+                            filteredData?.map((user) => {
                                 return (
                                     <Tr key={user.id}>
                                         <Td>{user.id}</Td>

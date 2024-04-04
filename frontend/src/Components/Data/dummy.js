@@ -149,3 +149,43 @@ export const networkMarketingProducts = [
     { id: 100010, name: "Kitchen Appliances", minQuantity: 100, price: 150 }
 ];
 
+export const packages = [
+    { id: 100001, packageName: 'Package 1', cost: 1660, selectedProduct: 'Product 1' },
+    { id: 100002, packageName: 'Package 2', cost: 2000, selectedProduct: 'Product 2' },
+    { id: 100003, packageName: 'Package 3', cost: 1500, selectedProduct: 'Product 3' },
+    { id: 100004, packageName: 'Package 4', cost: 1500, selectedProduct: 'Product 4' },
+    { id: 100005, packageName: 'Package 5', cost: 1500, selectedProduct: 'Product 5' },
+    { id: 100006, packageName: 'Package 6', cost: 1500, selectedProduct: 'Product 6' },
+    { id: 100007, packageName: 'Package 7', cost: 1500, selectedProduct: 'Product 7' },
+    { id: 100008, packageName: 'Package 8', cost: 1500, selectedProduct: 'Product 8' },
+    { id: 100009, packageName: 'Package 9', cost: 1500, selectedProduct: 'Product 9' },
+    { id: 100010, packageName: 'Package 10', cost: 1500, selectedProduct: 'Product 10' },
+    { id: 100011, packageName: 'Package 10', cost: 1500, selectedProduct: 'Product 10' },
+    { id: 100012, packageName: 'Package 11', cost: 1500, selectedProduct: 'Product 11' },
+    { id: 100013, packageName: 'Package 12', cost: 1500, selectedProduct: 'Product 12' },
+    { id: 100014, packageName: 'Package 13', cost: 1500, selectedProduct: 'Product 13' },
+
+];
+
+export const memberList = [
+    { username: 'username1', email: 'user1@example.com', name: 'User 1', package: 'Package 1', rank: 'Rank 1' },
+    { username: 'username2', email: 'user2@example.com', name: 'User 2', package: 'Package 2', rank: 'Rank 2' },
+    { username: 'username3', email: 'user3@example.com', name: 'User 3', package: 'Package 3', rank: 'Rank 3' },
+    { username: 'username4', email: 'user4@example.com', name: 'User 4', package: 'Package 4', rank: 'Rank 4' },
+    { username: 'username5', email: 'user5@example.com', name: 'User 5', package: 'Package 5', rank: 'Rank 5' },
+    { username: 'username6', email: 'user6@example.com', name: 'User 6', package: 'Package 6', rank: 'Rank 6' },
+    { username: 'username7', email: 'user7@example.com', name: 'User 7', package: 'Package 7', rank: 'Rank 7' },
+    { username: 'username8', email: 'user8@example.com', name: 'User 8', package: 'Package 8', rank: 'Rank 8' },
+    { username: 'username9', email: 'user9@example.com', name: 'User 9', package: 'Package 9', rank: 'Rank 9' },
+    { username: 'username10', email: 'user10@example.com', name: 'User 10', package: 'Package 10', rank: 'Rank 10' },
+    { username: 'username11', email: 'user11@example.com', name: 'User 11', package: 'Package 11', rank: 'Rank 11' },
+    { username: 'username12', email: 'user12@example.com', name: 'User 12', package: 'Package 12', rank: 'Rank 12' },
+    { username: 'username13', email: 'user13@example.com', name: 'User 13', package: 'Package 13', rank: 'Rank 13' },
+    { username: 'username14', email: 'user14@example.com', name: 'User 14', package: 'Package 14', rank: 'Rank 14' },
+    { username: 'username15', email: 'user15@example.com', name: 'User 15', package: 'Package 15', rank: 'Rank 15' },
+    { username: 'username16', email: 'user16@example.com', name: 'User 16', package: 'Package 16', rank: 'Rank 16' },
+    { username: 'username17', email: 'user17@example.com', name: 'User 17', package: 'Package 17', rank: 'Rank 17' },
+    { username: 'username18', email: 'user18@example.com', name: 'User 18', package: 'Package 18', rank: 'Rank 18' },
+    { username: 'username19', email: 'user19@example.com', name: 'User 19', package: 'Package 19', rank: 'Rank 19' },
+    { username: 'username20', email: 'user20@example.com', name: 'User 20', package: 'Package 20', rank: 'Rank 20' }
+];

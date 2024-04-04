@@ -4,6 +4,8 @@ import { Box, Button, Flex, FormControl, FormLabel, Heading, IconButton, Input, 
      Table, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/react';
 import { countries } from '../../Data/dummy';
 import { EditIcon, DeleteIcon, NotAllowedIcon } from '@chakra-ui/icons';
+import SearchForm from '../../GeneralScreens/SearchForm';
+import useFilteredData from '../../Hooks/useFilteredData';
 
 const CountryMaster = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -43,11 +45,7 @@ const CountryMaster = () => {
 }
 
 const CountryTable = ({ openModal }) => {
-    const [searchTerm, setSearchTerm] = useState('');
-
-    const filteredCountries = countries?.filter(
-        country => country.name.toLowerCase().includes(searchTerm.toLowerCase())
-    );
+    const [filteredData, handleFilterChange] = useFilteredData(countries);
 
     const handleViewClick = () => {
         // Call the openModal function passed as prop
@@ -58,13 +56,7 @@ const CountryTable = ({ openModal }) => {
         <>
             <Flex mb={5}>
                 <Heading as="h5" size="sm" color="white" flex={1}>Country List</Heading>
-                <Input
-                    flex={1}
-                    size="sm"
-                    placeholder="Search Country"
-                    value={searchTerm}
-                    onChange={e => setSearchTerm(e.target.value)}
-                />
+                <SearchForm data={countries} onFilterChange={handleFilterChange} />
             </Flex>
             <Box minH="450px" maxH="450px" overflowY="scroll">
                 <Table variant="simple" size="sm">
@@ -77,7 +69,7 @@ const CountryTable = ({ openModal }) => {
                     </Thead>
                     <Tbody>
                         {
-                            filteredCountries?.map((country) => {
+                            filteredData?.map((country) => {
                                 return (
                                     <Tr key={country.id}>
                                         <Td>{country.id}</Td>

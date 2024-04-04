@@ -5,8 +5,10 @@ import {
     Select,
     Table, Tbody, Td, Th, Thead, Tr
 } from '@chakra-ui/react';
-import { EditIcon} from '@chakra-ui/icons';
+import { EditIcon } from '@chakra-ui/icons';
 import { networkMarketingRanks } from '../../Data/dummy';
+import SearchForm from '../../GeneralScreens/SearchForm';
+import useFilteredData from '../../Hooks/useFilteredData';
 
 const RankMaster = () => {
 
@@ -27,57 +29,57 @@ const RankMaster = () => {
             <Box boxShadow='base' bgColor="#16113a" p="10px" color="whitesmoke" height="fit-content" mb={5}>
                 <Heading as="h5" size="sm" color="white">Add New Rank</Heading>
                 <form>
-                        <Flex justify="space-between" mt={5}>
-                            <FormControl flex="1" mr={2}>
-                                <FormLabel>Rank Name</FormLabel>
-                                <Input type='text' placeholder='ex- rank1' />
-                            </FormControl>
-
-                            <FormControl flex="1">
-                                <FormLabel>Min Binary Income Required</FormLabel>
-                                <Input type='text' placeholder='ex- 4000' />
-                            </FormControl>
-                        </Flex>
-
-                        <Flex justify="space-between" mt={5}>
-                            <FormControl flex="1" mr={2}>
-                                <FormLabel>Downline Achiever Target </FormLabel>
-                                <Input type='text' placeholder='ex- 100' />
-                            </FormControl>
-
-                            <FormControl flex="1">
-                            <FormLabel>Min Person Required</FormLabel>
-                                    <Select multiple={false} color="black">
-                                        <option>100</option>
-                                        <option>200</option>
-                                        <option>300</option>
-                                        <option>400</option>
-                                        <option>500</option>
-                                        <option>700</option>
-                                        <option>800</option>
-                                    </Select>
-                            </FormControl>
-                        </Flex>
-
-                        <Flex justify="space-between" mt={5}>
-                            <FormControl flex="1" mr={2}>
-                                <FormLabel>Pool Bonus Percentage for Rank</FormLabel>
-                                <Input type='text' placeholder='ex- 20' />
-                            </FormControl>
-
-                            <FormControl flex="1">
-                                <FormLabel>Rank Icon</FormLabel>
-                                <Input type='file' variant='unstyled' />
-                            </FormControl>
-                        </Flex>
-
-                        <FormControl mt={5}>
-
+                    <Flex justify="space-between" mt={5}>
+                        <FormControl flex="1" mr={2}>
+                            <FormLabel>Rank Name</FormLabel>
+                            <Input type='text' placeholder='ex- rank1' />
                         </FormControl>
-                        <Flex justify="flex-end">
-                            <Button mt={5} bgColor="blue" color="whitesmoke" size="md">Submit</Button>
-                        </Flex>
-                    </form>
+
+                        <FormControl flex="1">
+                            <FormLabel>Min Binary Income Required</FormLabel>
+                            <Input type='text' placeholder='ex- 4000' />
+                        </FormControl>
+                    </Flex>
+
+                    <Flex justify="space-between" mt={5}>
+                        <FormControl flex="1" mr={2}>
+                            <FormLabel>Downline Achiever Target </FormLabel>
+                            <Input type='text' placeholder='ex- 100' />
+                        </FormControl>
+
+                        <FormControl flex="1">
+                            <FormLabel>Min Person Required</FormLabel>
+                            <Select multiple={false} color="black">
+                                <option>100</option>
+                                <option>200</option>
+                                <option>300</option>
+                                <option>400</option>
+                                <option>500</option>
+                                <option>700</option>
+                                <option>800</option>
+                            </Select>
+                        </FormControl>
+                    </Flex>
+
+                    <Flex justify="space-between" mt={5}>
+                        <FormControl flex="1" mr={2}>
+                            <FormLabel>Pool Bonus Percentage for Rank</FormLabel>
+                            <Input type='text' placeholder='ex- 20' />
+                        </FormControl>
+
+                        <FormControl flex="1">
+                            <FormLabel>Rank Icon</FormLabel>
+                            <Input type='file' variant='unstyled' />
+                        </FormControl>
+                    </Flex>
+
+                    <FormControl mt={5}>
+
+                    </FormControl>
+                    <Flex justify="flex-end">
+                        <Button mt={5} bgColor="blue" color="whitesmoke" size="md">Submit</Button>
+                    </Flex>
+                </form>
             </Box>
             <Box p="10px" style={{ backgroundColor: 'var(--secondary-bgcolor)' }}>
                 <RankTable openModal={openModal} />
@@ -91,12 +93,9 @@ const RankMaster = () => {
 export default RankMaster
 
 const RankTable = ({ openModal }) => {
-    const [searchTerm, setSearchTerm] = useState('');
+    
     const [isActive, setIsActive] = useState(true);
-
-    const filteredRanks = networkMarketingRanks?.filter(
-        rank => rank.rank.toLowerCase().includes(searchTerm.toLowerCase())
-    );
+    const [filteredData, handleFilterChange] = useFilteredData(networkMarketingRanks);
 
     const toggleActiveButton = () => {
         setIsActive(prevState => !prevState); // Toggle the state
@@ -111,13 +110,7 @@ const RankTable = ({ openModal }) => {
         <>
             <Flex mb={5}>
                 <Heading as="h5" size="sm" color="white" flex={1}>Rank List</Heading>
-                <Input
-                    flex={1}
-                    size="sm"
-                    placeholder="Search Rank"
-                    value={searchTerm}
-                    onChange={e => setSearchTerm(e.target.value)}
-                />
+                <SearchForm data={networkMarketingRanks} onFilterChange={handleFilterChange} />
             </Flex>
             <Box minH="450px" maxH="450px" overflowY="scroll">
                 <Table variant="simple" size="sm">
@@ -131,7 +124,7 @@ const RankTable = ({ openModal }) => {
                     </Thead>
                     <Tbody>
                         {
-                            filteredRanks?.map((rank) => {
+                            filteredData?.map((rank) => {
                                 return (
                                     <Tr key={rank.id}>
                                         <Td>{rank.id}</Td>
@@ -179,16 +172,16 @@ const RankEditPopUp = ({ isOpen, onClose }) => {
                             </FormControl>
 
                             <FormControl flex="1">
-                            <FormLabel>Min Person Required</FormLabel>
-                                    <Select multiple={false}>
-                                        <option>100</option>
-                                        <option>200</option>
-                                        <option>300</option>
-                                        <option>400</option>
-                                        <option>500</option>
-                                        <option>700</option>
-                                        <option>800</option>
-                                    </Select>
+                                <FormLabel>Min Person Required</FormLabel>
+                                <Select multiple={false}>
+                                    <option>100</option>
+                                    <option>200</option>
+                                    <option>300</option>
+                                    <option>400</option>
+                                    <option>500</option>
+                                    <option>700</option>
+                                    <option>800</option>
+                                </Select>
                             </FormControl>
                         </Flex>
 

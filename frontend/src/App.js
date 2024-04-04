@@ -1,7 +1,7 @@
 import './App.css';
-import { BrowserRouter} from 'react-router-dom'
-import AdminSidebar from './Components/Dashboard/AdminSidebar';
+import { BrowserRouter } from 'react-router-dom'
 import { registerCharts } from './Components/Charts/registerCharts';
+import AdminSidebar from './Components/GeneralScreens/AdminSidebar';
 
 registerCharts()
 
