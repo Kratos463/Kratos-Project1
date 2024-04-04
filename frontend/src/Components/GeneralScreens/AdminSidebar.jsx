@@ -147,7 +147,7 @@ const SidebarContent = ({ ...props }) => (
             <NavItem icon={FaRegNewspaper} to='/newsletter'>Newsletter</NavItem>
 
             <NavItemWithSubMenu icon={IoSettingsOutline} title="Settings">
-                <NavItem>Income Settings</NavItem>
+                <NavItem to='/setting/income'>Income Settings</NavItem>
                 <NavItem>Operator Rights</NavItem>
                 <NavItem>Create new password for member or operator</NavItem>
             </NavItemWithSubMenu>

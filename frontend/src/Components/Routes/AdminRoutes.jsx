@@ -14,6 +14,7 @@ import CreateSpecialEmails from '../Dashboard/Member Management/CreateSpecialEma
 import ZeroValuedGift from '../Dashboard/Member Management/ZeroValuedGift'
 import DummyPower from '../Dashboard/Member Management/DummyPower'
 import CreateNewsLetter from '../Dashboard/Newsletter/CreateNewsLetter'
+import IncomeSetting from '../Dashboard/Settings/IncomeSetting'
 
 const AdminRoutes = () => {
     return (
@@ -42,6 +43,12 @@ const AdminRoutes = () => {
 
             {/* newsletter */}
             <Route path='/newsletter' element={<CreateNewsLetter />}></Route>
+
+            {/* setting routes */}
+            <Route path='/setting'>
+                <Route path='income' Component={IncomeSetting} />
+            </Route>
+
         </Routes>
     )
 }

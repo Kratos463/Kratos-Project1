@@ -9,6 +9,7 @@ const ZeroValuedGift = () => {
     return (
         <>
             <Box p="10px" style={{ backgroundColor: 'var(--secondary-bgcolor)' }}>
+            <Heading as="h5" textAlign="center" size="md" color="white">Allot Zero Valued Gift Codes</Heading>
                 <form>
                     <Flex justify="space-between" mt={5}>
                         <FormControl flex="1" mr={2}>
