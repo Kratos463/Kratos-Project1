@@ -6,6 +6,7 @@ import { countries } from '../../Data/dummy';
 import { EditIcon, DeleteIcon, NotAllowedIcon } from '@chakra-ui/icons';
 import SearchForm from '../../GeneralScreens/SearchForm';
 import useFilteredData from '../../Hooks/useFilteredData';
+import Breadcrumbs from '../../GeneralScreens/BreadCrumbs';
 
 const CountryMaster = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -22,6 +23,7 @@ const CountryMaster = () => {
 
     return (
         <>
+        <Breadcrumbs />
                 <Box boxShadow='base' bgColor="#16113a" p="10px" color="whitesmoke" height="fit-content" mb={5}>
                     <Heading as="h5" size="sm" color="white">Add New Country</Heading>
                     <form>
@@ -74,7 +76,7 @@ const CountryTable = ({ openModal }) => {
                                     <Tr key={country.id}>
                                         <Td>{country.id}</Td>
                                         <Td>{country.name}</Td>
-                                        <Td>
+                                        <Td display={{base: "flex"}}>
                                             <IconButton title='block' icon={<NotAllowedIcon color="red" />} size='sm' background="none" />
                                             <IconButton title='edit' icon={<EditIcon color="orange" />} size='sm' background="none" onClick={handleViewClick} />
                                             <IconButton title='delete' icon={<DeleteIcon color="red" />} size='sm' background="none" />

@@ -30,7 +30,7 @@ const ZeroValuedGift = () => {
                     </FormControl>
 
                     <Flex justify="flex-end">
-                        <Button mt={5} bgColor="blue" color="whitesmoke" size="md">Submit</Button>
+                        <Button mt={5} bgColor="blue" color="whitesmoke" size="md" type="submit">Submit</Button>
                     </Flex>
                 </form>
             </Box>

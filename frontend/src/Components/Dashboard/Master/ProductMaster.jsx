@@ -57,36 +57,23 @@ const ProductMaster = () => {
                     </Flex>
 
                     <Flex justify="space-between" mt={5}>
-                        <FormControl flex="1" mr={2}>
-                            <FormLabel>Validity of Voucher</FormLabel>
-                            <Input type='text' placeholder='ex- explanation' />
-                        </FormControl>
-
                         <FormControl flex="1">
                             <FormLabel>Product Image</FormLabel>
                             <Input type='file' variant='unstyled' />
                         </FormControl>
-                    </Flex>
-
-                    <Flex justify="space-between" mt={5}>
-                        <FormControl flex="1" mr={2}>
-                            <FormLabel>Subscription Time Span</FormLabel>
-                            <Input type='text' placeholder='ex- explanation' />
-                        </FormControl>
-
                         <FormControl flex="1">
                             <FormLabel>Status</FormLabel>
-                            <RadioGroup defaultValue='2' size='lg'>
+                            <RadioGroup defaultValue='1' size='lg'>
                                 <Stack spacing={5} direction='row'>
                                     <Radio colorScheme='green' value='1'>
-                                        Activate
+                                        Active
                                     </Radio>
                                     <Radio colorScheme='red' value='2'>
-                                        Deactivate
+                                        Deactive
                                     </Radio>
                                 </Stack>
                             </RadioGroup>
-                        </FormControl>
+                        </FormControl> 
                     </Flex>
 
                     <Flex justify="flex-end">

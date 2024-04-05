@@ -51,8 +51,6 @@ const SpecialEmailForm = () => {
                     <Input type='text' placeholder='subject' />
                 </FormControl>
 
-
-
                 <FormControl mt={5}>
                     <FormLabel>Body</FormLabel>
                     <Textarea name="message" placeholder='write here...' />

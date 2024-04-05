@@ -13,6 +13,7 @@ import {
     Checkbox
 } from '@chakra-ui/react';
 import {Link} from 'react-router-dom'
+// import logo from '../../Assests/meta-light-logo-01.png'
 
 
 export const FloatingLabelInput = ({ label, flex, ...rest }) => {

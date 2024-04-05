@@ -10,8 +10,12 @@ import {
     useDisclosure,
     DrawerOverlay,
     useColorModeValue,
-    VStack,
     Image,
+    Menu,
+    MenuButton,
+    MenuList,
+    MenuDivider,
+    MenuItem,
 } from '@chakra-ui/react';
 import { AiOutlineTeam } from 'react-icons/ai';
 import { BsClipboard2Check } from 'react-icons/bs';
@@ -28,21 +32,37 @@ import { IoSettingsOutline, IoWalletOutline } from "react-icons/io5";
 import { FaRegNewspaper } from "react-icons/fa";
 import logo from '../../Assests/meta-light-logo-01.png'
 
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import AdminRoutes from '../Routes/AdminRoutes';
 import { useState } from 'react';
+import ProfileDropDown from './ProfileDropDown';
 
 
 export default function AdminSidebar() {
     const { isOpen, onClose, onOpen } = useDisclosure();
 
+    const location = useLocation()
+
+    const isAuthPage = location.pathname === '/login' || location.pathname === '/';
+
+    const user = {
+        name: "Abhishek",
+        email: "abhisheksingh@gmail.com"
+    }
+
     return (
         <Box as="section" bg={useColorModeValue('gray.50', 'gray.700')} minH="100vh">
-            <SidebarContent display={{ base: 'none', md: 'unset' }} />
+            {!isAuthPage && (
+                <SidebarContent display={{ base: 'none', md: 'unset' }} />
+            )}
             <Drawer isOpen={isOpen} onClose={onClose} placement="left">
                 <DrawerOverlay />
                 <DrawerContent>
-                    <SidebarContent w="full" borderRight="none" />
+                    {
+                        !isAuthPage && (
+                            <SidebarContent w="320px" borderRight="none" />
+                        )
+                    }
                 </DrawerContent>
             </Drawer>
             <Box ml={{ base: 0, md: 60 }} transition=".3s ease" position='relative'>
@@ -71,17 +91,34 @@ export default function AdminSidebar() {
                     />
 
                     <Flex align="center">
-                        <Avatar
-                            ml="4"
-                            size="sm"
-                            name="Ahmad"
-                            src="https://avatars2.githubusercontent.com/u/37842853?v=4"
-                            cursor="pointer"
-                        />
-                        <VStack marginLeft="5px" spacing="0px" alignItems="flex-start" color="whitesmoke">
-                            <Text fontWeight="bold" fontSize="16px" fontFamily="Open sans" mb={0} >Abhishek</Text>
-                            <Text fontSize="12px" mt={0}>Admin</Text>
-                        </VStack>
+                        <Menu >
+                            <MenuButton
+                                transition='all 0.2s'
+                                borderRadius='md'
+                                _hover={{ bg: '#16113a' }}
+                            >
+                                <Flex align="center">
+                                    <Avatar
+                                        ml="4"
+                                        size="sm"
+                                        name="Ahmad"
+                                        src="https://avatars2.githubusercontent.com/u/37842853?v=4"
+                                        cursor="pointer"
+                                    />
+                                    {/* <VStack marginLeft="5px" spacing="0px" alignItems="flex-start" color="whitesmoke">
+                                        <Text fontWeight="bold" fontSize="16px" fontFamily="Open sans" mb={0} >Abhishek</Text>
+                                        <Text fontSize="12px" mt={0}>Admin</Text>
+                                    </VStack> */}
+                                </Flex>
+                            </MenuButton>
+                            <MenuList size='sm' bg="#040930" borderRadius="1px" shadow="lg" mt={0}>
+                                <ProfileDropDown user={user}>
+                                    <MenuItem bg="transparent" color="whitesmoke">My Profile</MenuItem>
+                                </ProfileDropDown>
+                                <MenuDivider />
+                                <MenuItem bg="transparent" color='red'>Logout</MenuItem>
+                            </MenuList>
+                        </Menu>
                     </Flex>
                 </Flex>
 
@@ -129,19 +166,21 @@ const SidebarContent = ({ ...props }) => (
             <NavItemWithSubMenu icon={RiMastercardLine} title="Master">
                 <NavItem to='/master/country-master'>Country Master</NavItem>
                 <NavItem to='/master/operator-master'>Operator Master</NavItem>
+                <NavItem to='/master/department-master'>Department Master</NavItem>
                 <NavItem>Gift Code Creation</NavItem>
                 <NavItem>Member Type</NavItem>
                 <NavItem to='/master/rank-master'>Rank Master</NavItem>
                 <NavItem to='/master/package-master'>Package Master</NavItem>
                 <NavItem to='/master/product-master'>Product Master</NavItem>
+                <NavItem to='/master/subscription-master'>Subscription Master</NavItem>
             </NavItemWithSubMenu>
 
             <NavItemWithSubMenu icon={AiOutlineTeam} title="Member Management">
-                <NavItem to='member-management/members'>All Memebers</NavItem>
-                <NavItem to='member-management/special-email'>Create Special Emails</NavItem>
+                <NavItem to='/member-management/members'>All Memebers</NavItem>
+                <NavItem to='/member-management/special-email'>Create Special Emails</NavItem>
                 <NavItem>ID Transfer Request</NavItem>
-                <NavItem to='member-management/dummy-power'>Allot Dummy Power to Leader</NavItem>
-                <NavItem to='member-management/gift-code'>Allot Zero Valued Gift Codes</NavItem>
+                <NavItem to='/member-management/dummy-power'>Allot Dummy Power to Leader</NavItem>
+                <NavItem to='/member-management/gift-code'>Allot Zero Valued Gift Codes</NavItem>
             </NavItemWithSubMenu>
 
             <NavItem icon={FaRegNewspaper} to='/newsletter'>Newsletter</NavItem>
@@ -178,6 +217,8 @@ const SidebarContent = ({ ...props }) => (
 
 
 const NavItem = ({ icon, children, to }) => {
+
+    const location = useLocation()
     const color = useColorModeValue('gray.600', 'gray.300');
 
     return (
@@ -187,7 +228,8 @@ const NavItem = ({ icon, children, to }) => {
             activeclassname="active"
             style={{
                 textDecoration: 'none',
-                color: 'inherit',
+                color: location.pathname === to ? '#040930' : 'inherit',
+                backgroundColor: location.pathname === to ? '#FFFFFF' : 'inherit',
             }}
         >
             <Flex

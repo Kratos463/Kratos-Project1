@@ -146,7 +146,6 @@ export const networkMarketingProducts = [
     { id: 100007, name: "Personal Care Items", minQuantity: 100, price: 35 },
     { id: 100008, name: "Fitness Equipment", minQuantity: 100, price: 100 },
     { id: 100009, name: "Water Purification Systems", minQuantity: 100, price: 200 },
-    { id: 100010, name: "Kitchen Appliances", minQuantity: 100, price: 150 }
 ];
 
 export const packages = [

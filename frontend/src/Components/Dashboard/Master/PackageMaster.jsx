@@ -1,12 +1,11 @@
 import React, { useState } from 'react'
 import {
-  Box, Button, Flex, FormControl, FormLabel, Heading, IconButton, Input, Modal,
+  Box, Breadcrumb, Button, Checkbox, CheckboxGroup, Flex, FormControl, FormLabel, Heading, IconButton, Input, Modal,
   ModalBody, ModalCloseButton, ModalContent, ModalHeader, ModalOverlay,
   Radio,
   RadioGroup,
-  Select,
-  Stack,
-  Table, Tbody, Td, Th, Thead, Tr
+  VStack,
+  Table, Tbody, Td, Th, Thead, Tr, Stack
 } from '@chakra-ui/react';
 import { EditIcon } from '@chakra-ui/icons';
 import { networkMarketingProducts, packages } from '../../Data/dummy';
@@ -16,6 +15,16 @@ import SearchForm from '../../GeneralScreens/SearchForm';
 const PackageMaster = () => {
 
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const [checkedProducts, setCheckedProducts] = useState({});
+
+  const handleCheckboxChange = (event) => {
+    const { name, checked } = event.target;
+    setCheckedProducts(prevState => ({
+      ...prevState,
+      [name]: checked
+    }));
+  };
 
   // Function to open the modal
   const openModal = () => {
@@ -29,6 +38,7 @@ const PackageMaster = () => {
 
   return (
     <>
+      <Breadcrumb />
       <Box boxShadow='base' bgColor="#16113a" p="10px" color="whitesmoke" height="fit-content" mb={5}>
         <Heading as="h5" size="sm" color="white">Add New Package</Heading>
         <form>
@@ -58,46 +68,37 @@ const PackageMaster = () => {
           </Flex>
 
           <Flex justify="space-between" mt={5}>
-            <FormControl flex="1">
-              <FormLabel>Select Product</FormLabel>
-              <Select multiple={false}>
-                {networkMarketingProducts.map((product, index) => <option value={product.name} key={index}>{product.name}</option>)}
-              </Select>
+            <FormControl flex="1" mr={2}>
+              <FormLabel>Select Products</FormLabel>
+              <CheckboxGroup colorScheme='green' value={Object.keys(checkedProducts)} onChange={setCheckedProducts}>
+                <VStack spacing={[1, 5]} justifyContent="flex-start" alignItems="flex-start">
+                  {networkMarketingProducts.map((product, index) => (
+                    <React.Fragment key={index}>
+                        <Checkbox name={product.name} onChange={handleCheckboxChange}>{product.name}</Checkbox>
+                        {checkedProducts[product.name] && (
+                          <Input placeholder={`Enter ${product.name} quantity`} size="sm" />
+                        )}
+                    </React.Fragment>
+                  ))}
+                </VStack>
+              </CheckboxGroup>
             </FormControl>
 
-            <FormControl flex="1">
-              <FormLabel>Voucher Quantity</FormLabel>
-              <Select multiple={false}>
-                <option>100</option>
-                <option>200</option>
-                <option>300</option>
-                <option>400</option>
-                <option>500</option>
-                <option>700</option>
-                <option>800</option>
-              </Select>
-            </FormControl>
-          </Flex>
-
-          <Flex justify="space-between" mt={5}>
             <FormControl flex="1">
               <FormLabel>Status</FormLabel>
-              <RadioGroup defaultValue='2' size='lg'>
+              <RadioGroup defaultValue='1' size='lg'>
                 <Stack spacing={5} direction='row'>
                   <Radio colorScheme='green' value='1'>
-                    Activate
+                    Active
                   </Radio>
                   <Radio colorScheme='red' value='2'>
-                    Deactivate
+                    Deactive
                   </Radio>
                 </Stack>
               </RadioGroup>
             </FormControl>
           </Flex>
 
-          <FormControl mt={5}>
-
-          </FormControl>
           <Flex justify="flex-end">
             <Button mt={5} bgColor="blue" color="whitesmoke" size="md">Submit</Button>
           </Flex>
@@ -223,13 +224,13 @@ const PackageEditPopUp = ({ isOpen, onClose }) => {
 
               <FormControl flex="1">
                 <FormLabel>Status</FormLabel>
-                <RadioGroup defaultValue='2' size='lg'>
+                <RadioGroup defaultValue='1' size='lg'>
                   <Stack spacing={5} direction='row'>
                     <Radio colorScheme='green' value='1'>
-                      Activate
+                      Active
                     </Radio>
                     <Radio colorScheme='red' value='2'>
-                      Deactivate
+                      Deactive
                     </Radio>
                   </Stack>
                 </RadioGroup>
