@@ -1,24 +1,27 @@
 import './App.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { registerCharts } from './Components/Charts/registerCharts';
-import AdminSidebar from './Components/GeneralScreens/AdminSidebar';
-import RegisterUser from './Components/AuthScreens/RegisterUser';
-import LoginUser from './Components/AuthScreens/LoginUser';
+import LoginUser from './Pages/Admin/AuthScreens/LoginUser';
+import RegisterUser from './Pages/Admin/AuthScreens/RegisterUser';
+import AdminSidebar from './Components/SideBar/AdminSidebar';
+import { AdavancedCrudContextProvider } from './Context/AdvancedCrud';
+import MetaFV from './Components/App/MetaFV';
 
 registerCharts()
 
-function App() {
+const App = () => {
   return (
     <div className="App">
-
-      <BrowserRouter>
-        <Routes>
-          <Route exact element={<RegisterUser />} path='/'></Route>
-          <Route element={<LoginUser />} path='/login'></Route>
-        </Routes>
-        <AdminSidebar />
-      </BrowserRouter>
-
+      <AdavancedCrudContextProvider>
+        <BrowserRouter>
+          <Routes>
+            <Route element={<LoginUser />} path="/login" />
+            <Route element={<RegisterUser />} path="/" />
+            <Route element={<MetaFV />} path="/back-office/*" />
+            <Route element={<AdminSidebar />} path="/admin/*" />
+          </Routes>
+        </BrowserRouter>
+      </AdavancedCrudContextProvider>
     </div>
   );
 }
