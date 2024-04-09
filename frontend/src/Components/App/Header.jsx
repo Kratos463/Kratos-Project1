@@ -4,7 +4,6 @@ import {
   Flex,
   Text,
   IconButton,
-  Button,
   Stack,
   Collapse,
   Icon,
@@ -12,15 +11,15 @@ import {
   PopoverTrigger,
   PopoverContent,
   useColorModeValue,
-  useBreakpointValue,
   useDisclosure,
-  Image
+  Image,
+  Avatar,
+  Heading
 } from '@chakra-ui/react';
 import {
   HamburgerIcon,
   CloseIcon,
   ChevronDownIcon,
-  ChevronRightIcon,
 } from '@chakra-ui/icons';
 
 import Logo from '../../Assests/meta-light-logo-01.png'
@@ -44,7 +43,7 @@ const NAV_ITEMS = [
         href: '#',
       },
       {
-        label: 'REFERRAL CLUB COMPITION',
+        label: 'REFERRAL CLUB COMPETITION',
         href: '#',
       },
       {
@@ -81,7 +80,7 @@ const NAV_ITEMS = [
         href: '#',
       },
       {
-        label: 'LOYALITY POINTS',
+        label: 'LOYALTY POINTS',
         href: '#',
       },
       {
@@ -112,69 +111,148 @@ const NAV_ITEMS = [
   },
 ];
 
+const PROFILE_ITEMS = [
+  {
+    label: "MY PACKAGE",
+    href: "#"
+  },
+  {
+    label: "SETTING",
+    href: "/back-office/settings"
+  },
+  {
+    label: "DOCUMENTS",
+    href: "#"
+  },
+  {
+    label: "MY INVITE QR",
+    href: "#"
+  },
+  {
+    label: "UPLOAD KYC",
+    href: "#"
+  },
+  {
+    label: "EARNING & PAYOUTS",
+    href: "#"
+  },
+  {
+    label: "GIFT CODES",
+    href: "#"
+  },
+  {
+    label: "WITHDRAW BITCOIN",
+    href: "#"
+  },
+  {
+    label: "SUPPORT",
+    href: "#"
+  },
+  {
+    label: "COMPLIANCE CONTACT",
+    href: "#"
+  },
+  {
+    label: "INVOCIES",
+    href: "#"
+  },
+  {
+    label: "LOGOUT",
+    href: "#"
+  },
+]
+
 export default function Header() {
   const { isOpen, onToggle } = useDisclosure();
+  const linkColor = useColorModeValue('gray', 'lightgray');
+  const linkHoverColor = useColorModeValue('lightgray', 'white');
+  const popoverContentBgColor = useColorModeValue('#040930', 'gray.800');
 
   return (
-    <Box>
+    <Box as="header"
+      color={linkColor}
+      // borderRadius={{ base: "0px", md: "50px" }}
+      position="sticky" top={0} zIndex="sticky"
+      bg={useColorModeValue('#16113a', 'gray.800')}
+      boxShadow="md"
+      px="80px"
+    >
       <Flex
-        bg={useColorModeValue('#16113a', 'gray.800')}
-        color={useColorModeValue('gray.600', 'white')}
         minH={'60px'}
         py={{ base: 2 }}
         px={{ base: 4 }}
-        borderRadius={{base: "0px", md:"50px"}}
-        align={'center'}>
-        <Flex
-          flex={{ base: 1, md: 'auto' }}
-          ml={{ base: -2 }}
-          display={{ base: 'flex', md: 'none' }}>
-          <IconButton
-            onClick={onToggle}
-            icon={isOpen ? <CloseIcon w={3} h={3} /> : <HamburgerIcon w={5} h={5} />}
-            variant={'ghost'}
-            aria-label={'Toggle Navigation'}
-          />
-        </Flex>
-        <Flex flex={{ base: 1 }} justify={{ base: 'center', md: 'start' }} align="center">
-          <Link to='/back-office'>
-            <Image src={Logo} width="50px"/>
-          </Link>
 
+        align={'center'}
+        justify={'space-between'}
+      >
+        <Flex align="center">
+          <Link to='/back-office'>
+            <Image src={Logo} width="50px" />
+          </Link>
           <Flex display={{ base: 'none', md: 'flex' }} ml={10}>
             <DesktopNav />
           </Flex>
         </Flex>
 
+        <IconButton
+          display={{ base: 'flex', md: 'none' }}
+          colorScheme='none'
+          color="white"
+          background="none"
+          onClick={onToggle}
+          icon={isOpen ? <CloseIcon w={3} h={3} /> : <HamburgerIcon w={5} h={5} />}
+          variant={'solid'}
+          aria-label={'Toggle Navigation'}
+        />
+
         <Stack
           flex={{ base: 1, md: 0 }}
           justify={'flex-end'}
           direction={'row'}
-          spacing={6}>
-          <Button as={'a'} fontSize={'sm'} fontWeight={400} variant={'link'} href={'#'}>
-            Sign In
-          </Button>
-          <Button
-            as={'a'}
-            display={{ base: 'none', md: 'inline-flex' }}
-            fontSize={'sm'}
-            fontWeight={600}
-            color={'white'}
-            bg={'blue'}
-            href={'#'}
-            _hover={{
-              bg: 'blue.500',
-            }}>
-            Sign Up
-          </Button>
+          spacing={2}
+          align={"center"}
+        >
+          <Popover trigger={'hover'} >
+            <PopoverTrigger>
+              <Flex alignItems="center" cursor="pointer">
+                <Avatar
+                  ml="4"
+                  size="sm"
+                  name="Ahmad"
+                  src="https://avatars2.githubusercontent.com/u/37842853?v=4"
+                />
+                <Heading as="h5" fontSize={'md'} ml={2}
+                  color={linkColor}
+                  fontWeight={800} _hover={{
+                    textDecoration: 'none',
+                    color: linkHoverColor,
+                  }}>{"ABHISHEK"}</Heading>
+              </Flex>
+            </PopoverTrigger>
+            <PopoverContent
+              border={0}
+              boxShadow={'xl'}
+              bg={popoverContentBgColor}
+              rounded={"sm"}
+              zIndex={1}
+              minW="fit-content"
+              maxW="fit-content"
+            >
+              <Stack spacing={2} p={4}>
+                {PROFILE_ITEMS.map((child) => (
+                  <DesktopSubNav key={child.label} {...child} />
+                ))}
+              </Stack>
+            </PopoverContent>
+          </Popover>
         </Stack>
       </Flex>
 
-      <Collapse in={isOpen} animateOpacity>
+      <Collapse in={isOpen} animateOpacity zIndex={1}>
         <MobileNav />
       </Collapse>
     </Box>
-  );
+  )
 }
 
 const DesktopNav = () => {
@@ -212,7 +290,7 @@ const DesktopNav = () => {
                 zIndex={1}
                 minW="fit-content"
                 maxW="fit-content">
-                <Stack>
+                <Stack p={4}>
                   {navItem.children.map((child) => (
                     <DesktopSubNav key={child.label} {...child} />
                   ))}
@@ -223,8 +301,6 @@ const DesktopNav = () => {
         </Box>
       ))}
     </Stack>
-
-
   );
 };
 
@@ -261,7 +337,7 @@ const DesktopSubNav = ({ label, href }) => {
 
 const MobileNav = () => {
   return (
-    <Stack bg={useColorModeValue('white', 'gray.800')} p={4} display={{ md: 'none' }}>
+    <Stack bg={useColorModeValue('#040930', 'gray.800')} p={4} display={{ md: 'none' }}>
       {NAV_ITEMS.map((navItem) => (
         <MobileNavItem key={navItem.label} {...navItem} />
       ))}
@@ -286,15 +362,17 @@ const MobileNavItem = ({ label, children, href }) => {
         <Text fontWeight={600} color={useColorModeValue('gray.600', 'gray.200')}>
           {label}
         </Text>
-        {children && (
-          <Icon
-            as={ChevronDownIcon}
-            transition={'all .25s ease-in-out'}
-            transform={isOpen ? 'rotate(180deg)' : ''}
-            w={6}
-            h={6}
-          />
-        )}
+        <Flex flexDirection="row">
+          {children && (
+            <Icon
+              as={ChevronDownIcon}
+              transition={'all .25s ease-in-out'}
+              transform={isOpen ? 'rotate(180deg)' : ''}
+              w={6}
+              h={6}
+            />
+          )}
+        </Flex>
       </Box>
 
       <Collapse in={isOpen} animateOpacity style={{ marginTop: '0!important' }}>

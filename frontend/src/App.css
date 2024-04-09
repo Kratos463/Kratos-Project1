@@ -12,12 +12,13 @@
 
 :root {
     --primary-bgcolor: #040930;
-    --secondary-bgcolor: #16113a
+    --secondary-bgcolor: #16113a;
+    --blue: rgba(26, 26, 153, 0.763);
 }
 
 ::-webkit-scrollbar {
     width: 0px;
-}
+} 
 
 .linkColor {
     color: blue

@@ -6,11 +6,13 @@ import MetaFVLayout from '../Layout/MetaFVLayout'
 
 const MetaFV = () => {
     return (
-        <MetaFVLayout>
+        <>
             <Header />
-            <UserRoutes />
+            <MetaFVLayout>
+                <UserRoutes />
+            </MetaFVLayout>
             <Footer />
-        </MetaFVLayout>
+        </>
     )
 }
 
