@@ -62,7 +62,7 @@ const NAV_ITEMS = [
   },
   {
     label: 'EVENTS',
-    href: '#',
+    href: '/back-office/events',
   },
   {
     label: 'BONUS',
@@ -107,14 +107,14 @@ const NAV_ITEMS = [
   },
   {
     label: 'META STORE',
-    href: '#',
+    href: '/back-office/store',
   },
 ];
 
 const PROFILE_ITEMS = [
   {
     label: "MY PACKAGE",
-    href: "#"
+    href: "/back-office/mypackage"
   },
   {
     label: "SETTING",
@@ -122,7 +122,7 @@ const PROFILE_ITEMS = [
   },
   {
     label: "DOCUMENTS",
-    href: "#"
+    href: "/back-office/documents"
   },
   {
     label: "MY INVITE QR",
