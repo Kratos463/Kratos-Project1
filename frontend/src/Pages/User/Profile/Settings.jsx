@@ -14,7 +14,7 @@ const Settings = () => {
             about="Your KYC was approved on July 7th, 2021. You can not change name or address without contacting support."
         >
             <Tabs isFitted variant='soft-rounded' colorScheme='blue'>
-                <TabList mb='1em' overflowX='scroll'>
+                <TabList mb='2em' sx={{ boxShadow: '0 0 10px rgba(205, 205, 253, 0.5)' }} borderRadius="50px">
                     {tabs.map((tab, index) => (
                         <Tab key={index}>{tab.label}</Tab>
                     ))}
@@ -35,7 +35,7 @@ const Settings = () => {
 
 export const FormField = ({ label, type, placeholder }) => (
     <FormControl mt={5}>
-        <FormLabel>{label}</FormLabel>
+        <FormLabel fontWeight={600}>{label}</FormLabel>
         <Input type={type} placeholder={placeholder} />
     </FormControl>
 );
@@ -44,9 +44,11 @@ export const ButtonSubmit = ({ label, justify }) => (
     <Flex justify={justify || 'center'} mt={5}>
         <Button
             borderRadius='50px'
-            width='100px'
+            width='fit-content'
+            px="20px"
             bgColor='rgba(26, 26, 153, 0.763)'
             color='white'
+            fontWeight={600}
             _hover={{
                 bgColor: 'rgba(26, 26, 153, 1)',
                 boxShadow: 'md',

@@ -22,6 +22,7 @@ import {
   ChevronDownIcon,
 } from '@chakra-ui/icons';
 
+
 import Logo from '../../Assests/meta-light-logo-01.png'
 import { Link } from 'react-router-dom'
 
@@ -32,133 +33,133 @@ const NAV_ITEMS = [
     children: [
       {
         label: 'PRESENTATION & PROMO',
-        href: '#',
+        to: '#',
       },
       {
         label: 'ABOUT US',
-        href: '#',
+        to: '#',
       },
       {
         label: 'TOP PRODUCERS',
-        href: '#',
+        to: '#',
       },
       {
         label: 'REFERRAL CLUB COMPETITION',
-        href: '#',
+        to: '#',
       },
       {
         label: 'META MAGAZINE',
-        href: '#',
+        to: '#',
       },
       {
         label: 'VIDEO ARCHIVE',
-        href: '#',
+        to: '#',
       },
     ],
   },
   {
     label: 'NEWS',
-    href: '#',
+    to: '/back-office/news',
   },
   {
     label: 'EVENTS',
-    href: '/back-office/events',
+    to: '/back-office/events',
   },
   {
     label: 'BONUS',
     children: [
       {
         label: 'SALES BONUS',
-        href: '#',
+        to: '#',
       },
       {
         label: 'ACTIVITY SUMMARY',
-        href: '#',
+        to: '#',
       },
       {
         label: 'FEAR OF LOSS',
-        href: '#',
+        to: '#',
       },
       {
         label: 'LOYALTY POINTS',
-        href: '#',
+        to: '#',
       },
       {
         label: 'META BONUS',
-        href: '#',
+        to: '#',
       },
       {
         label: 'MATCHING BONUS',
-        href: '#',
+        to: '#',
       },
       {
         label: 'RESIDUAL BONUS',
-        href: '#',
+        to: '#',
       },
       {
         label: 'RANKS',
-        href: '#',
+        to: '#',
       },
     ],
   },
   {
     label: 'TEAM',
-    href: '#',
+    to: '#',
   },
   {
     label: 'META STORE',
-    href: '/back-office/store',
+    to: '/back-office/store',
   },
 ];
 
 const PROFILE_ITEMS = [
   {
     label: "MY PACKAGE",
-    href: "/back-office/mypackage"
+    to: "/back-office/mypackage"
   },
   {
     label: "SETTING",
-    href: "/back-office/settings"
+    to: "/back-office/settings"
   },
   {
     label: "DOCUMENTS",
-    href: "/back-office/documents"
+    to: "/back-office/documents"
   },
   {
     label: "MY INVITE QR",
-    href: "#"
+    to: "#"
   },
   {
     label: "UPLOAD KYC",
-    href: "#"
+    to: "#"
   },
   {
     label: "EARNING & PAYOUTS",
-    href: "#"
+    to: "/back-office/userlog"
   },
   {
     label: "GIFT CODES",
-    href: "#"
+    to: "/back-office/giftcodes"
   },
   {
     label: "WITHDRAW BITCOIN",
-    href: "#"
+    to: "/back-office/withdrawal"
   },
   {
     label: "SUPPORT",
-    href: "#"
+    to: "#"
   },
   {
     label: "COMPLIANCE CONTACT",
-    href: "#"
+    to: "#"
   },
   {
     label: "INVOCIES",
-    href: "#"
+    to: "/back-office/invoices"
   },
   {
     label: "LOGOUT",
-    href: "#"
+    to: "#"
   },
 ]
 
@@ -172,7 +173,7 @@ export default function Header() {
     <Box as="header"
       color={linkColor}
       // borderRadius={{ base: "0px", md: "50px" }}
-      position="sticky" top={0} zIndex="sticky"
+      position="sticky" top={0} zIndex={1}
       bg={useColorModeValue('#16113a', 'gray.800')}
       boxShadow="md"
       px="80px"
@@ -189,7 +190,7 @@ export default function Header() {
           <Link to='/back-office'>
             <Image src={Logo} width="50px" />
           </Link>
-          <Flex display={{ base: 'none', md: 'flex' }} ml={10}>
+          <Flex display={{ base: 'none', md: 'flex' }} ml={10} >
             <DesktopNav />
           </Flex>
         </Flex>
@@ -267,11 +268,11 @@ const DesktopNav = () => {
           <Popover trigger={'hover'} placement={'bottom-start'}>
             <PopoverTrigger>
               <Box
-                as="a"
+                as={Link}
                 p={2}
-                href={navItem.href ?? '#'}
+                to={navItem.to ?? '#'}
                 fontSize={'md'}
-                fontWeight={800}
+                fontWeight={600}
                 color={linkColor}
                 _hover={{
                   textDecoration: 'none',
@@ -287,10 +288,10 @@ const DesktopNav = () => {
                 boxShadow={'xl'}
                 bg={popoverContentBgColor}
                 rounded={"sm"}
-                zIndex={1}
+                // zIndex={1}
                 minW="fit-content"
                 maxW="fit-content">
-                <Stack p={4}>
+                <Stack p={4} >
                   {navItem.children.map((child) => (
                     <DesktopSubNav key={child.label} {...child} />
                   ))}
@@ -304,11 +305,12 @@ const DesktopNav = () => {
   );
 };
 
-const DesktopSubNav = ({ label, href }) => {
+
+const DesktopSubNav = ({ label, to }) => {
   return (
     <Box
-      as="a"
-      href={href}
+      as={Link}
+      to={to}
       role={'group'}
       p={2}
       _hover={{ bg: useColorModeValue('#16113a', 'gray.900') }}>
@@ -335,6 +337,7 @@ const DesktopSubNav = ({ label, href }) => {
   );
 };
 
+
 const MobileNav = () => {
   return (
     <Stack bg={useColorModeValue('#040930', 'gray.800')} p={4} display={{ md: 'none' }}>
@@ -345,15 +348,15 @@ const MobileNav = () => {
   );
 };
 
-const MobileNavItem = ({ label, children, href }) => {
+const MobileNavItem = ({ label, children, to }) => {
   const { isOpen, onToggle } = useDisclosure();
 
   return (
     <Stack spacing={4} onClick={children && onToggle}>
       <Box
         py={2}
-        as="a"
-        href={href ?? '#'}
+        as={Link}
+        to={to ?? '#'}
         justifyContent="space-between"
         alignItems="center"
         _hover={{
@@ -385,7 +388,7 @@ const MobileNavItem = ({ label, children, href }) => {
           align={'start'}>
           {children &&
             children.map((child) => (
-              <Box as="a" key={child.label} py={2} href={child.href}>
+              <Box as={Link} key={child.label} py={2} to={child.to}>
                 {child.label}
               </Box>
             ))}

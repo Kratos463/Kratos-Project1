@@ -13,7 +13,7 @@ const MyPackages = () => {
         <InnerBoxLayout label="My Package">
             <BoxLayout labelText='You have purchased the air package'>
                 <Flex justify='space-between'>
-                    <Stack>
+                    <Stack flex={1}>
                         <Text ></Text>
                         <ButtonSubmit label="Upgrade" justify='flex-start' />
                     </Stack>

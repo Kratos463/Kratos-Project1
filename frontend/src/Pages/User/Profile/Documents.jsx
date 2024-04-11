@@ -1,11 +1,11 @@
 import React from 'react'
 import InnerBoxLayout from '../../../Components/Layout/InnerBoxLayout'
-import { Table, Thead, Tr, Th, Tbody, Td, Button } from '@chakra-ui/react'
+import { Table, Thead, Tr, Th, Tbody, Td, Button, Box } from '@chakra-ui/react'
 
 const Documents = () => {
     return (
         <InnerBoxLayout label="Documents" about="Legal and compliance documentation">
-            <Table variant="simple" size='md' style={{ backgroundColor: 'var(--secondary-bgcolor)' }} borderRadius={10}>
+            <Table variant="simple" size='md' bgColor='secondary' borderRadius={10}>
                 <Thead position="sticky" top={0} zIndex="docked" height="50px">
                     <Tr>
                         <Th>Name</Th>
