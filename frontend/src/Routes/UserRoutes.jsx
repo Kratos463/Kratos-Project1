@@ -12,6 +12,11 @@ import Withdrawal from '../Pages/User/Profile/Withdrawal'
 import Invoices from '../Pages/User/Profile/Invoices'
 import News from '../Pages/User/News/News'
 import SingleNews from '../Pages/User/News/SingleNews'
+import PresentationPromo from '../Pages/User/INFO/Presentation&Promo'
+import AboutUs from '../Pages/User/INFO/AboutUs'
+import TopProducer from '../Pages/User/INFO/TopProducer'
+import VideoArchive from '../Pages/User/INFO/VideoArchive'
+import ReferralCompetition from '../Pages/User/INFO/ReferralCompetition'
 
 const UserRoutes = () => {
   return (
@@ -37,6 +42,13 @@ const UserRoutes = () => {
       <Route path='/giftCodes' element={<GiftCodes />} />
       <Route path='/withdrawal' element={<Withdrawal />} />
       <Route path='/invoices' element={<Invoices />} />
+
+      {/* Info routes */}
+      <Route path='/presentation-promo' element={<PresentationPromo />} />
+      <Route path='/about-us' element={<AboutUs />} />
+      <Route path='/top-producers' element={<TopProducer />} />
+      <Route path='/referral-competition' element={<ReferralCompetition />} />
+      <Route path='/videoarchive' element={<VideoArchive />} />
     </Routes>
   )
 }

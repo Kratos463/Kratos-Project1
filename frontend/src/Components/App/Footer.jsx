@@ -1,33 +1,36 @@
 import React from 'react'
-import { Box, Flex, Stack, Text, useColorModeValue, } from '@chakra-ui/react'
+import { Box, Flex, Stack, Text, useColorModeValue } from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
 import { FaYoutube, FaInstagram, FaFacebookF } from "react-icons/fa";
-import { BsTwitterX } from "react-icons/bs";
-
+import { BsTwitter } from "react-icons/bs";
 
 const Footer = () => {
   const linkColor = useColorModeValue('gray', 'lightgray');
 
   return (
-    <Box bgColor="#16113a" px={{ base: "0px", md: "80px" }} py={{ base: "0px", md: "80px" }} width="100%" color='lightgray'>
-      <Flex justify='space-between'>
-        <Stack>
-          <Text fontSize={'md'} fontWeight={800} color="gray">Information</Text>
+    <Box bgColor="#16113a" px={{ base: "20px", md: "80px" }} py={{ base: "40px", md: "80px" }} color='lightgray'>
+      <Flex direction={{ base: 'column', md: 'row' }} justify='space-between'>
+        <Stack spacing={4} mb={{ base: 8, md: 0 }}>
+          <Text fontSize="lg" fontWeight={800} color="gray">Information</Text>
           {Infomration_links.map((link) => (
-            <Link key={link.label} to={link.href}>{link.label}</Link>
+            <Link key={link.label} to={link.href}>
+              <Text fontSize="md" color={linkColor}>{link.label}</Text>
+            </Link>
           ))}
         </Stack>
 
-        <Stack>
-          <Text fontSize={'md'} fontWeight={800} color="gray">Quick Links</Text>
+        <Stack spacing={4} mb={{ base: 8, md: 0 }}>
+          <Text fontSize="lg" fontWeight={800} color="gray">Quick Links</Text>
           {Quick_links.map((link) => (
-            <Link key={link.label} to={link.href}>{link.label}</Link>
+            <Link key={link.label} to={link.href}>
+              <Text fontSize="md" color={linkColor}>{link.label}</Text>
+            </Link>
           ))}
         </Stack>
 
-        <Stack>
-          <Text fontSize={'md'} fontWeight={800} color="gray">© 2024 META FORTUNAVERSE</Text>
-          <Text>
+        <Stack spacing={4} mb={{ base: 8, md: 0 }}>
+          <Text fontSize="lg" fontWeight={800} color="gray">© 2024 META FORTUNAVERSE</Text>
+          <Text fontSize="md" color={linkColor}>
             Reg. No: 38021 <br />
             Premises No. 482, Fourth Floor <br />
             Building 08 <br />
@@ -37,16 +40,15 @@ const Footer = () => {
         </Stack>
       </Flex>
 
-      <Flex justify='center' mt={10} gap={10} fontSize="2xl">
-      <FaFacebookF />
-      <FaInstagram />
-      <BsTwitterX />
-      <FaYoutube />
+      <Flex justify='center' gap={10} mt={10} fontSize="2xl">
+        <FaFacebookF />
+        <FaInstagram />
+        <BsTwitter />
+        <FaYoutube />
       </Flex>
     </Box>
   );
 }
-
 
 const Infomration_links = [
   {
@@ -110,4 +112,4 @@ const Quick_links = [
   },
 ]
 
-export default Footer
+export default Footer;

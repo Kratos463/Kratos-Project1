@@ -33,27 +33,23 @@ const NAV_ITEMS = [
     children: [
       {
         label: 'PRESENTATION & PROMO',
-        to: '#',
+        to: '/back-office/presentation-promo',
       },
       {
         label: 'ABOUT US',
-        to: '#',
+        to: '/back-office/about-us',
       },
       {
         label: 'TOP PRODUCERS',
-        to: '#',
+        to: '/back-office/top-producers',
       },
       {
         label: 'REFERRAL CLUB COMPETITION',
-        to: '#',
-      },
-      {
-        label: 'META MAGAZINE',
-        to: '#',
+        to: '/back-office/referral-competition',
       },
       {
         label: 'VIDEO ARCHIVE',
-        to: '#',
+        to: '/back-office/videoarchive',
       },
     ],
   },
