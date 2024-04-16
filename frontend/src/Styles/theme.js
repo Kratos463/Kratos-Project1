@@ -1,8 +1,8 @@
-import {extendTheme} from '@chakra-ui/react'
+import { extendTheme } from '@chakra-ui/react'
 
 const theme = extendTheme({
     colors: {
-        primary : "#040930",
+        primary: "#010425",
         secondary: "#16113a",
         link: "rgba(26, 26, 153, 0.763)",
         font: {

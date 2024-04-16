@@ -1,28 +1,33 @@
 import React from 'react'
 import InnerBoxLayout from '../../../Components/Layout/InnerBoxLayout'
-import { Table, Thead, Tr, Th, Tbody, Td, Button, Box } from '@chakra-ui/react'
+import { Table, Thead, TableContainer, Tr, Th, Tbody, Td, Button, Box } from '@chakra-ui/react'
+import BoxLayout from '../../../Components/Layout/BoxLayout'
 
 const Documents = () => {
     return (
         <InnerBoxLayout label="Documents" about="Legal and compliance documentation">
-            <Table variant="simple" size='md' bgColor='secondary' borderRadius={10}>
-                <Thead position="sticky" top={0} zIndex="docked" height="50px">
-                    <Tr>
-                        <Th>Name</Th>
-                        <Th>Download</Th>
-                    </Tr>
-                </Thead>
-                <Tbody>
-                    {
-                        documentsName.map((name, index)=> {
-                            return <Tr key={index}>
-                                <Td>{name}</Td>
-                                <Td><Button size="sm">Download PDF</Button></Td>
+            <BoxLayout>
+                <TableContainer height="500px" overflowY="auto">
+                    <Table variant="simple" size='lg'>
+                        <Thead  height="50px" bg="secondary">
+                            <Tr>
+                                <Th>Name</Th>
+                                <Th>Download</Th>
                             </Tr>
-                        })
-                    }
-                </Tbody>
-            </Table >
+                        </Thead>
+                        <Tbody>
+                            {
+                                documentsName.map((name, index) => {
+                                    return <Tr key={index}>
+                                        <Td>{name}</Td>
+                                        <Td><Button size="sm">Download PDF</Button></Td>
+                                    </Tr>
+                                })
+                            }
+                        </Tbody>
+                    </Table >
+                </TableContainer>
+            </BoxLayout>
         </InnerBoxLayout>
     )
 }

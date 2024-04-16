@@ -96,7 +96,7 @@ const RegisterUser = () => {
     };
 
     return (
-        <Stack spacing={6} py="100px" height="100%" backgroundColor="#040930">
+        <Stack spacing={6} py="100px" height="100%" bg="primary">
             <VStack color="white">
                 <Heading size="lg" textAlign="center">
                     Sign Up

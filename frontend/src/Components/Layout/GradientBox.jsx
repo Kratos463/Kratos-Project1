@@ -3,10 +3,9 @@ import { Box } from "@chakra-ui/react";
 const GradientBox = ({ children }) => {
     return (
         <Box
-            width="200px"
-            p={5}
+            p={20}
             borderRadius="10px"
-            bgGradient="linear(to-t, #16113a, #040930)"
+            bgGradient="linear(to-b, primary, secondary)"
         >
             {children}
         </Box>

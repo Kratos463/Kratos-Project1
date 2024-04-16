@@ -11,7 +11,7 @@ const Store = () => {
     return (
         <InnerBoxLayout label="META FORTUNAVERSE STORE">
             <Tabs isFitted variant='soft-rounded' colorScheme='blue'>
-                <TabList overflowX='auto'>
+                <TabList mb='2em' sx={{ boxShadow: '0 0 10px rgba(205, 205, 253, 0.5)' }} borderRadius="50px">
                     {categories.map((category, index) => (
                         <Tab key={index}>{category}</Tab>
                     ))}

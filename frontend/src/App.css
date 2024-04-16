@@ -18,7 +18,7 @@
 
 ::-webkit-scrollbar {
     width: 0px;
-} 
+}
 
 .linkColor {
     color: blue
@@ -66,4 +66,14 @@
 
 .ck-editor__editable:focus {
     box-shadow: none !important;
+}
+
+@keyframes slide-in {
+    from {
+        width: 0;
+    }
+
+    to {
+        width: 100%;
+    }
 }

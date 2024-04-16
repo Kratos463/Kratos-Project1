@@ -6,6 +6,7 @@ import RegisterUser from './Pages/Admin/AuthScreens/RegisterUser';
 import AdminSidebar from './Components/SideBar/AdminSidebar';
 import { AdavancedCrudContextProvider } from './Context/AdvancedCrud';
 import MetaFV from './Components/App/MetaFV';
+import Guest from './Components/Guests/Guest';
 
 registerCharts()
 
@@ -16,9 +17,10 @@ const App = () => {
         <BrowserRouter>
           <Routes>
             <Route element={<LoginUser />} path="/login" />
-            <Route element={<RegisterUser />} path="/" />
+            <Route element={<RegisterUser />} path="/register" />
             <Route element={<MetaFV />} path="/back-office/*" />
             <Route element={<AdminSidebar />} path="/admin/*" />
+            <Route element={<Guest />} path="/*" />
           </Routes>
         </BrowserRouter>
       </AdavancedCrudContextProvider>

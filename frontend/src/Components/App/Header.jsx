@@ -178,7 +178,7 @@ export default function Header() {
         minH={'60px'}
         py={{ base: 2 }}
         px={{ base: 4 }}
-
+ 
         align={'center'}
         justify={'space-between'}
       >
@@ -231,7 +231,7 @@ export default function Header() {
               boxShadow={'xl'}
               bg={popoverContentBgColor}
               rounded={"sm"}
-              zIndex={1}
+              zIndex="docked"
               minW="fit-content"
               maxW="fit-content"
             >

@@ -31,7 +31,7 @@ const LoginUser = () => {
     };
 
     return (
-        <Stack spacing={6} py="100px" height="100vh" backgroundColor="#040930">
+        <Stack spacing={6} py="100px" height="100vh" backgroundColor="primary">
             <VStack color="white">
                 <Heading size="lg" textAlign="center">
                     Log In
